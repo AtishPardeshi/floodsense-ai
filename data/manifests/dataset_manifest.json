@@ -1,0 +1,260 @@
+{
+  "project": "FloodSense AI",
+  "manifest_version": "1.2",
+  "generated_at": "2026-11-10T06:10:45+00:00",
+  "sources": [
+    {
+      "name": "Open-Meteo Historical Weather API",
+      "type": "hourly_historical_rainfall",
+      "variable": "precipitation (mm per hour)",
+      "timezone": "Asia/Kolkata",
+      "access_url": "https://archive-api.open-meteo.com/v1/archive",
+      "date_range": {
+        "start": "2022-01-01",
+        "end": "2024-12-31"
+      },
+      "fetch_date": "2026-11-10",
+      "spatial_coverage": "One grid point per study spot (see data/raw/spots.csv)",
+      "resolution": "Hourly reanalysis (ERA5-Land / ECMWF blend)",
+      "licence_or_attribution": "Attribution to Open-Meteo (CC BY 4.0 for non-commercial / research)",
+      "local_path": "data/raw/rainfall/",
+      "files": [
+        {
+          "path": "data/raw/rainfall/agara_2022-01-01_2022-12-31.json",
+          "sha256": "44d159ae85284fde9e5c405f84d2c92e2bbc5f14536e5a44570306969cb14685"
+        },
+        {
+          "path": "data/raw/rainfall/agara_2022-09-01_2022-12-31.json",
+          "sha256": "f182de6f229e3eaf858caa961c54b68db6764f3a4f802357578a7d5192402a0e"
+        },
+        {
+          "path": "data/raw/rainfall/agara_2023-01-01_2023-12-31.json",
+          "sha256": "b7c3b637a99ad27bb055a1ea2a291fa3df4e0150d41600596124dc743093a40a"
+        },
+        {
+          "path": "data/raw/rainfall/agara_2024-01-01_2024-10-31.json",
+          "sha256": "b3046f501da347431790c8c80d9c1598210a1afc1dfbe373a83b4f46ea708d56"
+        },
+        {
+          "path": "data/raw/rainfall/agara_2024-01-01_2024-12-31.json",
+          "sha256": "22cf283822da8a975a5522a1795b51f1ac6e98ce978c4042a1cd206cf1b24ea0"
+        },
+        {
+          "path": "data/raw/rainfall/bellandur_2022-01-01_2022-12-31.json",
+          "sha256": "07dba77b5608de66902e59ab31c3433cd6181e79596bece307a42feaa98f36eb"
+        },
+        {
+          "path": "data/raw/rainfall/bellandur_2022-09-01_2022-12-31.json",
+          "sha256": "4493f347a44ae9b3fe0ef7e25851d7153ca6e494da2aafa18db24840003e31e4"
+        },
+        {
+          "path": "data/raw/rainfall/bellandur_2023-01-01_2023-12-31.json",
+          "sha256": "ef99a80b7f83f99582934e106928bf73d23245c00b0ba6e6d5b96624654dc301"
+        },
+        {
+          "path": "data/raw/rainfall/bellandur_2024-01-01_2024-10-31.json",
+          "sha256": "57be29b4f863fb84e33f821a5dd35bb736b0e5726f9681866b885e9e1073af39"
+        },
+        {
+          "path": "data/raw/rainfall/bellandur_2024-01-01_2024-12-31.json",
+          "sha256": "eb4e278eaba7eb82ea02e563515197538134fbde1b5ec80c99f7ee27c07bd5bc"
+        },
+        {
+          "path": "data/raw/rainfall/hebbal_2022-01-01_2022-12-31.json",
+          "sha256": "9f9f897a857bf4d594d999e2b18129229cce9a01cf177886e9addf3046d47dc9"
+        },
+        {
+          "path": "data/raw/rainfall/hebbal_2022-09-01_2022-12-31.json",
+          "sha256": "532aba64daecb8424c18470f4a79ffb8d813412f8f275275e84b04e68962af10"
+        },
+        {
+          "path": "data/raw/rainfall/hebbal_2023-01-01_2023-12-31.json",
+          "sha256": "8f7ee98b0445982182998815df40a095536d5e6c17ce30006ee6d079c2ab7f63"
+        },
+        {
+          "path": "data/raw/rainfall/hebbal_2024-01-01_2024-10-31.json",
+          "sha256": "e71e7da761e0919a554dff3c859bc2f0edcc6a178d59c0be0b7fde4b6de0044c"
+        },
+        {
+          "path": "data/raw/rainfall/hebbal_2024-01-01_2024-12-31.json",
+          "sha256": "3566da4029d28ee2b85378abf37aa6c99faf8544e67eedb2b4868dffd1839836"
+        },
+        {
+          "path": "data/raw/rainfall/hsr_layout_2022-01-01_2022-12-31.json",
+          "sha256": "eabd9ec08d1a1ed744ccd32e534f80d61bb77b6f4780b53142fc47f9ffa55476"
+        },
+        {
+          "path": "data/raw/rainfall/hsr_layout_2022-09-01_2022-12-31.json",
+          "sha256": "a491fd5d48f947277649cc70bfa6715b92001008deef6d5ac6a03b9ce042a93a"
+        },
+        {
+          "path": "data/raw/rainfall/hsr_layout_2023-01-01_2023-12-31.json",
+          "sha256": "37e7200e55e71e1f206fa97a5aa5e558b959d063ae733f6b88a54d0a61c1802e"
+        },
+        {
+          "path": "data/raw/rainfall/hsr_layout_2024-01-01_2024-10-31.json",
+          "sha256": "bd20b1ef9e6182ad3d534200fa526d1785eddd79cb6f875daacc4ac0eaae657c"
+        },
+        {
+          "path": "data/raw/rainfall/hsr_layout_2024-01-01_2024-12-31.json",
+          "sha256": "96a0446793807d8f02be866d43570e8166bc9f9ac652924dd69f65d50ea82065"
+        },
+        {
+          "path": "data/raw/rainfall/indiranagar_2022-01-01_2022-12-31.json",
+          "sha256": "bb2b0603108dcabfdf4c6551a937d399ee8b9ad953edcb4ff903c746f10c1606"
+        },
+        {
+          "path": "data/raw/rainfall/indiranagar_2022-09-01_2022-12-31.json",
+          "sha256": "5c96933f29aed30fa921c72cc93588234ef0519b38455f258354a4982230cf85"
+        },
+        {
+          "path": "data/raw/rainfall/indiranagar_2023-01-01_2023-12-31.json",
+          "sha256": "db1523279bb75ea304def6bab15f442711fea12781f80efa969c09b927bf90db"
+        },
+        {
+          "path": "data/raw/rainfall/indiranagar_2024-01-01_2024-10-31.json",
+          "sha256": "d078b37617c149330ebb39eb4c4e7b34aa50b12cbf34774db93192fd08c9b939"
+        },
+        {
+          "path": "data/raw/rainfall/indiranagar_2024-01-01_2024-12-31.json",
+          "sha256": "c9f9382595d63e21ab2358c5ba039aec14d649e2733c49bec31fd6d3601bd4b8"
+        },
+        {
+          "path": "data/raw/rainfall/kr_circle_2022-01-01_2022-12-31.json",
+          "sha256": "6279e8b3bb14531ab710f486e7f46fd3ac0311c50d375bb6f9951c0c69cdc4f8"
+        },
+        {
+          "path": "data/raw/rainfall/kr_circle_2022-09-01_2022-12-31.json",
+          "sha256": "ab705351cdd73ad0842f25efb16e01ea1b1ae18238453649f2409e815e4e5485"
+        },
+        {
+          "path": "data/raw/rainfall/kr_circle_2023-01-01_2023-12-31.json",
+          "sha256": "25f08854e3d9504e6e9560fa9f016fc43b1e61d463e4db3c49c1f44fb78fdf13"
+        },
+        {
+          "path": "data/raw/rainfall/kr_circle_2024-01-01_2024-10-31.json",
+          "sha256": "0b63208545dfe4b2ef5d82e16589fdf1555143bdbf6125b8b97534529023e358"
+        },
+        {
+          "path": "data/raw/rainfall/kr_circle_2024-01-01_2024-12-31.json",
+          "sha256": "c391f695d360b6cad199caeeb35c0184b9e2a107fe523ad285d0d522d3bc71fb"
+        },
+        {
+          "path": "data/raw/rainfall/mahadevapura_2022-01-01_2022-12-31.json",
+          "sha256": "272d28f3ef794e2fdef947d7ebb93df64d0661755d3530d2e88342cc254b67e5"
+        },
+        {
+          "path": "data/raw/rainfall/mahadevapura_2022-09-01_2022-12-31.json",
+          "sha256": "0ab78a575da91d21250eb4c1ac17e70944608dcd17728ad2e0bcfad5aa7cddb6"
+        },
+        {
+          "path": "data/raw/rainfall/mahadevapura_2023-01-01_2023-12-31.json",
+          "sha256": "2cb7a423f51d599470b18a342625716df58716ac86447d982d6d135df464a2f3"
+        },
+        {
+          "path": "data/raw/rainfall/mahadevapura_2024-01-01_2024-10-31.json",
+          "sha256": "b877f94e561355d06d80e35c7802041fc8bd3f2ba7d5720dc68b6a641eec2c4e"
+        },
+        {
+          "path": "data/raw/rainfall/mahadevapura_2024-01-01_2024-12-31.json",
+          "sha256": "eea5aa74d7f80f5b3a587e3c621f1be7ab56a36e585dec0e7ae756b1c16cb919"
+        },
+        {
+          "path": "data/raw/rainfall/silk_board_2022-01-01_2022-12-31.json",
+          "sha256": "2a9d60c9a1d39eee4bc3c5199c03bfa0162a116256ac27b9e012110b62ff8191"
+        },
+        {
+          "path": "data/raw/rainfall/silk_board_2022-09-01_2022-12-31.json",
+          "sha256": "ce56be473c9bf93b4528ad6ecb98158548f3fbdd059a07a5826d82546232d461"
+        },
+        {
+          "path": "data/raw/rainfall/silk_board_2023-01-01_2023-12-31.json",
+          "sha256": "e5c70b7ff8dcff27120ccad466262d72558604dde43799aaa056433c3194ba59"
+        },
+        {
+          "path": "data/raw/rainfall/silk_board_2024-01-01_2024-10-31.json",
+          "sha256": "82a15c3069439f4422db33545f62dd62343ece1a29ed4adb28552805308be368"
+        },
+        {
+          "path": "data/raw/rainfall/silk_board_2024-01-01_2024-12-31.json",
+          "sha256": "92a4cca333fa634fb160c3260cd39238dccd5b0d963f1398968b3d27a9878df7"
+        }
+      ],
+      "status": "fetched",
+      "data_limitations": "Modelled reanalysis precipitation, not physical rain-gauge measurements. Microscale convective storms may be smoothed."
+    },
+    {
+      "name": "Flood incident reports (manual)",
+      "type": "labels",
+      "date_range": {
+        "start": "2022-09-05",
+        "end": "2024-10-21"
+      },
+      "fetch_date": "2026-11-10",
+      "spatial_coverage": "Bengaluru pilot study spots",
+      "resolution": "Timestamped incidents (minute/hour precision)",
+      "licence_or_attribution": "Each row in data/raw/incidents.csv carries its own source_name and source_url",
+      "local_path": "data/raw/incidents.csv",
+      "files": [
+        {
+          "path": "data/raw/incidents.csv",
+          "sha256": "1786109f75980ef7b4d470bdbae49789f3f950c5cdb681cefd4a08eb266bac3e"
+        }
+      ],
+      "status": "compiled",
+      "data_limitations": "Compiled from verified public news reports and traffic advisories. Unreported localized flood events may not be present in the historical record."
+    },
+    {
+      "name": "SRTM elevation data",
+      "type": "digital_elevation_model",
+      "date_range": null,
+      "fetch_date": "2026-11-10",
+      "spatial_coverage": "Bengaluru study area",
+      "resolution": "30m (1 arc-sec) SRTM",
+      "licence_or_attribution": "NASA SRTM public domain / USGS / OpenTopography",
+      "local_path": "data/raw/dem/",
+      "files": [
+        {
+          "path": "data/raw/dem/bengaluru_dem_sample.json",
+          "sha256": "87802ae63ea5b11c17020d43980738873efe5387496ed8ce1028036e20c4b98b"
+        },
+        {
+          "path": "data/raw/dem/dem_metadata.json",
+          "sha256": "c0828338b2bc21bc4aaa1b769583cf758d4773e807246ad555eb53bebbc78831"
+        }
+      ],
+      "status": "prepared",
+      "data_limitations": "Captures top-of-canopy and building surfaces in dense urban clusters. Ground-level road underpass micro-depressions require engineering surveys."
+    },
+    {
+      "name": "OpenStreetMap",
+      "type": "road_and_waterway_network",
+      "date_range": null,
+      "fetch_date": "2026-11-10",
+      "spatial_coverage": "Bengaluru study area",
+      "resolution": "Road and open surface canal segment geometry (GeoJSON)",
+      "licence_or_attribution": "© OpenStreetMap contributors, ODbL",
+      "local_path": "data/raw/osm/",
+      "files": [
+        {
+          "path": "data/raw/osm/roads.geojson",
+          "sha256": "648e9ff40994dc3449c04969e5e4789e31665fdd6d2cbbd178ac9236af4476fb"
+        },
+        {
+          "path": "data/raw/osm/roads.sample.geojson",
+          "sha256": "ef42ee86da60667dc1ad2a2dc361e95c64e7b567c536570f7d0adae78310c217"
+        },
+        {
+          "path": "data/raw/osm/waterways.geojson",
+          "sha256": "9d5c8593ccb70b17cd8fd0fcac61cca6d0e163e9fe4c07be0050976a7c2ec8c9"
+        },
+        {
+          "path": "data/raw/osm/waterways.sample.geojson",
+          "sha256": "eb638d6386a4a19dee43dd63bc947c2490e06eb24127f29aaa4b6ed6b729c1e5"
+        }
+      ],
+      "status": "prepared",
+      "data_limitations": "OSM waterways reflect open surface streams and major canals (Rajakaluves); they DO NOT represent underground closed stormwater pipe networks."
+    }
+  ]
+}

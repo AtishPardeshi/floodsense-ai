@@ -1,0 +1,416 @@
+{
+  "PhysicalRiskModel_v2": {
+    "model_name": "PhysicalRiskModel_v2",
+    "evaluation_date": "2026-11-10T09:11:32+00:00",
+    "total_events": 6,
+    "detected_events": 0,
+    "missed_events": 6,
+    "event_recall": 0.0,
+    "total_incidents": 14,
+    "detected_incidents": 0,
+    "missed_incidents": 14,
+    "incident_recall": 0.0,
+    "eligible_positive_samples": 42,
+    "eligible_negative_samples": 0,
+    "excluded_unknown_samples": 3256,
+    "median_lead_time_min": null,
+    "precision": null,
+    "false_alarm_rate": null,
+    "f1_score": null,
+    "unavailability_reason": "Zero verified negative control samples exist in the dataset; unmonitored rainy hours are classified as unknown (-1). Precision, F1 Score, and False Alarm Rate cannot be mathematically evaluated without verified true negative control evidence.",
+    "incident_details": [
+      {
+        "incident_id": "i001",
+        "spot_id": "kr_circle",
+        "event_id": "ev_20230521_cloudburst",
+        "detected": false,
+        "max_risk": 0.053,
+        "reason": "Max risk 0.05 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i002",
+        "spot_id": "bellandur",
+        "event_id": "ev_20220905_deluge",
+        "detected": false,
+        "max_risk": 0.147,
+        "reason": "Max risk 0.15 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i003",
+        "spot_id": "silk_board",
+        "event_id": "ev_20220905_deluge",
+        "detected": false,
+        "max_risk": 0.15,
+        "reason": "Max risk 0.15 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i004",
+        "spot_id": "mahadevapura",
+        "event_id": "ev_20220905_deluge",
+        "detected": false,
+        "max_risk": 0.115,
+        "reason": "Max risk 0.12 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i005",
+        "spot_id": "hsr_layout",
+        "event_id": "ev_20220905_deluge",
+        "detected": false,
+        "max_risk": 0.119,
+        "reason": "Max risk 0.12 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i006",
+        "spot_id": "agara",
+        "event_id": "ev_20220905_deluge",
+        "detected": false,
+        "max_risk": 0.134,
+        "reason": "Max risk 0.13 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i007",
+        "spot_id": "silk_board",
+        "event_id": "ev_20221019_rains",
+        "detected": false,
+        "max_risk": 0.017,
+        "reason": "Max risk 0.02 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i008",
+        "spot_id": "bellandur",
+        "event_id": "ev_20221019_rains",
+        "detected": false,
+        "max_risk": 0.017,
+        "reason": "Max risk 0.02 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i009",
+        "spot_id": "kr_circle",
+        "event_id": "ev_20240519_thunderstorms",
+        "detected": false,
+        "max_risk": 0.121,
+        "reason": "Max risk 0.12 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i010",
+        "spot_id": "hebbal",
+        "event_id": "ev_20240519_thunderstorms",
+        "detected": false,
+        "max_risk": 0.082,
+        "reason": "Max risk 0.08 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i011",
+        "spot_id": "hebbal",
+        "event_id": "ev_20241015_northblr",
+        "detected": false,
+        "max_risk": 0.088,
+        "reason": "Max risk 0.09 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i012",
+        "spot_id": "agara",
+        "event_id": "ev_20241021_cloudburst",
+        "detected": false,
+        "max_risk": 0.009,
+        "reason": "Max risk 0.01 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i013",
+        "spot_id": "mahadevapura",
+        "event_id": "ev_20241021_cloudburst",
+        "detected": false,
+        "max_risk": 0.051,
+        "reason": "Max risk 0.05 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i014",
+        "spot_id": "indiranagar",
+        "event_id": "ev_20241021_cloudburst",
+        "detected": false,
+        "max_risk": 0.017,
+        "reason": "Max risk 0.02 below alert threshold 0.35"
+      }
+    ]
+  },
+  "PhysicalRiskBaseline_v1": {
+    "model_name": "PhysicalRiskBaseline_v1",
+    "evaluation_date": "2026-11-10T09:11:32+00:00",
+    "total_events": 6,
+    "detected_events": 0,
+    "missed_events": 6,
+    "event_recall": 0.0,
+    "total_incidents": 14,
+    "detected_incidents": 0,
+    "missed_incidents": 14,
+    "incident_recall": 0.0,
+    "eligible_positive_samples": 42,
+    "eligible_negative_samples": 0,
+    "excluded_unknown_samples": 3256,
+    "median_lead_time_min": null,
+    "precision": null,
+    "false_alarm_rate": null,
+    "f1_score": null,
+    "unavailability_reason": "Zero verified negative control samples exist in the dataset; unmonitored rainy hours are classified as unknown (-1). Precision, F1 Score, and False Alarm Rate cannot be mathematically evaluated without verified true negative control evidence.",
+    "incident_details": [
+      {
+        "incident_id": "i001",
+        "spot_id": "kr_circle",
+        "event_id": "ev_20230521_cloudburst",
+        "detected": false,
+        "max_risk": 0.053,
+        "reason": "Max risk 0.05 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i002",
+        "spot_id": "bellandur",
+        "event_id": "ev_20220905_deluge",
+        "detected": false,
+        "max_risk": 0.15,
+        "reason": "Max risk 0.15 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i003",
+        "spot_id": "silk_board",
+        "event_id": "ev_20220905_deluge",
+        "detected": false,
+        "max_risk": 0.15,
+        "reason": "Max risk 0.15 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i004",
+        "spot_id": "mahadevapura",
+        "event_id": "ev_20220905_deluge",
+        "detected": false,
+        "max_risk": 0.11,
+        "reason": "Max risk 0.11 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i005",
+        "spot_id": "hsr_layout",
+        "event_id": "ev_20220905_deluge",
+        "detected": false,
+        "max_risk": 0.113,
+        "reason": "Max risk 0.11 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i006",
+        "spot_id": "agara",
+        "event_id": "ev_20220905_deluge",
+        "detected": false,
+        "max_risk": 0.133,
+        "reason": "Max risk 0.13 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i007",
+        "spot_id": "silk_board",
+        "event_id": "ev_20221019_rains",
+        "detected": false,
+        "max_risk": 0.017,
+        "reason": "Max risk 0.02 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i008",
+        "spot_id": "bellandur",
+        "event_id": "ev_20221019_rains",
+        "detected": false,
+        "max_risk": 0.018,
+        "reason": "Max risk 0.02 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i009",
+        "spot_id": "kr_circle",
+        "event_id": "ev_20240519_thunderstorms",
+        "detected": false,
+        "max_risk": 0.12,
+        "reason": "Max risk 0.12 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i010",
+        "spot_id": "hebbal",
+        "event_id": "ev_20240519_thunderstorms",
+        "detected": false,
+        "max_risk": 0.081,
+        "reason": "Max risk 0.08 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i011",
+        "spot_id": "hebbal",
+        "event_id": "ev_20241015_northblr",
+        "detected": false,
+        "max_risk": 0.087,
+        "reason": "Max risk 0.09 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i012",
+        "spot_id": "agara",
+        "event_id": "ev_20241021_cloudburst",
+        "detected": false,
+        "max_risk": 0.009,
+        "reason": "Max risk 0.01 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i013",
+        "spot_id": "mahadevapura",
+        "event_id": "ev_20241021_cloudburst",
+        "detected": false,
+        "max_risk": 0.049,
+        "reason": "Max risk 0.05 below alert threshold 0.35"
+      },
+      {
+        "incident_id": "i014",
+        "spot_id": "indiranagar",
+        "event_id": "ev_20241021_cloudburst",
+        "detected": false,
+        "max_risk": 0.015,
+        "reason": "Max risk 0.01 below alert threshold 0.35"
+      }
+    ]
+  },
+  "PhysicalRiskModel_v2_ReanalysisTuned": {
+    "model_name": "PhysicalRiskModel_v2_ReanalysisTuned",
+    "evaluation_date": "2026-11-10T09:11:32+00:00",
+    "total_events": 6,
+    "detected_events": 2,
+    "missed_events": 4,
+    "event_recall": 0.333,
+    "total_incidents": 14,
+    "detected_incidents": 6,
+    "missed_incidents": 8,
+    "incident_recall": 0.429,
+    "eligible_positive_samples": 42,
+    "eligible_negative_samples": 0,
+    "excluded_unknown_samples": 3256,
+    "median_lead_time_min": 870.0,
+    "precision": null,
+    "false_alarm_rate": null,
+    "f1_score": null,
+    "unavailability_reason": "Zero verified negative control samples exist in the dataset; unmonitored rainy hours are classified as unknown (-1). Precision, F1 Score, and False Alarm Rate cannot be mathematically evaluated without verified true negative control evidence.",
+    "incident_details": [
+      {
+        "incident_id": "i001",
+        "spot_id": "kr_circle",
+        "event_id": "ev_20230521_cloudburst",
+        "detected": false,
+        "max_risk": 0.053,
+        "reason": "Max risk 0.05 below alert threshold 0.1"
+      },
+      {
+        "incident_id": "i002",
+        "spot_id": "bellandur",
+        "event_id": "ev_20220905_deluge",
+        "detected": true,
+        "max_risk": 0.147,
+        "first_alert_ts": "2022-09-04T17:00:00",
+        "onset_ts": "2022-09-05T07:00:00",
+        "lead_time_min": 840.0
+      },
+      {
+        "incident_id": "i003",
+        "spot_id": "silk_board",
+        "event_id": "ev_20220905_deluge",
+        "detected": true,
+        "max_risk": 0.15,
+        "first_alert_ts": "2022-09-04T17:00:00",
+        "onset_ts": "2022-09-05T08:00:00",
+        "lead_time_min": 900.0
+      },
+      {
+        "incident_id": "i004",
+        "spot_id": "mahadevapura",
+        "event_id": "ev_20220905_deluge",
+        "detected": true,
+        "max_risk": 0.115,
+        "first_alert_ts": "2022-09-04T20:00:00",
+        "onset_ts": "2022-09-05T06:00:00",
+        "lead_time_min": 600.0
+      },
+      {
+        "incident_id": "i005",
+        "spot_id": "hsr_layout",
+        "event_id": "ev_20220905_deluge",
+        "detected": true,
+        "max_risk": 0.119,
+        "first_alert_ts": "2022-09-04T20:00:00",
+        "onset_ts": "2022-09-05T07:00:00",
+        "lead_time_min": 660.0
+      },
+      {
+        "incident_id": "i006",
+        "spot_id": "agara",
+        "event_id": "ev_20220905_deluge",
+        "detected": true,
+        "max_risk": 0.134,
+        "first_alert_ts": "2022-09-04T17:00:00",
+        "onset_ts": "2022-09-05T08:00:00",
+        "lead_time_min": 900.0
+      },
+      {
+        "incident_id": "i007",
+        "spot_id": "silk_board",
+        "event_id": "ev_20221019_rains",
+        "detected": false,
+        "max_risk": 0.017,
+        "reason": "Max risk 0.02 below alert threshold 0.1"
+      },
+      {
+        "incident_id": "i008",
+        "spot_id": "bellandur",
+        "event_id": "ev_20221019_rains",
+        "detected": false,
+        "max_risk": 0.017,
+        "reason": "Max risk 0.02 below alert threshold 0.1"
+      },
+      {
+        "incident_id": "i009",
+        "spot_id": "kr_circle",
+        "event_id": "ev_20240519_thunderstorms",
+        "detected": true,
+        "max_risk": 0.121,
+        "first_alert_ts": "2024-05-18T17:00:00",
+        "onset_ts": "2024-05-19T17:00:00",
+        "lead_time_min": 1440.0
+      },
+      {
+        "incident_id": "i010",
+        "spot_id": "hebbal",
+        "event_id": "ev_20240519_thunderstorms",
+        "detected": false,
+        "max_risk": 0.082,
+        "reason": "Max risk 0.08 below alert threshold 0.1"
+      },
+      {
+        "incident_id": "i011",
+        "spot_id": "hebbal",
+        "event_id": "ev_20241015_northblr",
+        "detected": false,
+        "max_risk": 0.088,
+        "reason": "Max risk 0.09 below alert threshold 0.1"
+      },
+      {
+        "incident_id": "i012",
+        "spot_id": "agara",
+        "event_id": "ev_20241021_cloudburst",
+        "detected": false,
+        "max_risk": 0.009,
+        "reason": "Max risk 0.01 below alert threshold 0.1"
+      },
+      {
+        "incident_id": "i013",
+        "spot_id": "mahadevapura",
+        "event_id": "ev_20241021_cloudburst",
+        "detected": false,
+        "max_risk": 0.051,
+        "reason": "Max risk 0.05 below alert threshold 0.1"
+      },
+      {
+        "incident_id": "i014",
+        "spot_id": "indiranagar",
+        "event_id": "ev_20241021_cloudburst",
+        "detected": false,
+        "max_risk": 0.017,
+        "reason": "Max risk 0.02 below alert threshold 0.1"
+      }
+    ]
+  }
+}

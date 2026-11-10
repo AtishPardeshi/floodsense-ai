@@ -1,0 +1,371 @@
+================================================================================
+                    FLOODSENSE AI - COMPREHENSIVE PROJECT ANALYSIS REPORT
+================================================================================
+Project Name        : FloodSense AI
+Target Domain       : Hyperlocal Flood Early-Warning System (Bengaluru, India)
+Hackathon Context   : IBM Bobathon: Build for Bengaluru
+Analysis Date       : 2026-11-10
+Report Format       : Plain Text (.txt)
+Current Status      : Vertical Slice 1 (Functional Baseline MVP / Prototype)
+================================================================================
+
+1. EXECUTIVE SUMMARY
+--------------------------------------------------------------------------------
+FloodSense AI is an early-warning web platform and predictive engine designed to
+forecast hyperlocal urban flooding across vulnerable flood hotspots and
+underpasses in Bengaluru, Karnataka, India.
+
+Urban flooding in Bengaluru is characterized by severe spatial heterogeneity:
+low-lying valleys, historical lake beds (e.g., Bellandur), railway underpasses,
+and congested stormwater drainage networks (Rajakaluves) flood rapidly during
+high-intensity precipitation, often while adjacent neighborhoods remain dry.
+
+The project currently implements a functional "Vertical Slice 1" featuring:
+  - An explainable, physics-inspired risk calculation engine.
+  - A FastAPI backend exposing REST APIs for risk scoring and spot metadata.
+  - A React 18 + TypeScript + Vite frontend with Leaflet interactive mapping.
+  - Dynamic simulation controls (precipitation sliders for current and forecast rain).
+  - A data preparation pipeline designed to correlate historical Open-Meteo
+    hourly rainfall with crowdsourced/sourced flood incidents.
+  - Unit and integration test suites validating physics invariants and data logic.
+
+
+2. ARCHITECTURE & TECHNOLOGY STACK
+--------------------------------------------------------------------------------
+The project follows a decoupled, two-tier client-server architecture with an
+offline data engineering pipeline:
+
+[ Offline Pipeline ]
+  Open-Meteo API / DEM / OSM / Incidents CSV
+       │
+       ▼
+  backend/scripts/prepare_data.py
+       │
+       ▼
+  data/processed/ (Rainfall features + Binary labels)
+
+[ Runtime Architecture ]
+  User Browser (React + Leaflet + Vite)
+       │
+       │ HTTP / JSON (Debounced query params)
+       ▼
+  FastAPI Application (Uvicorn @ port 8000)
+       ├── /api/health  (Service health check)
+       ├── /api/spots   (Static hydrological & geographical spot attributes)
+       └── /api/risk    (Dynamic risk scoring & lead time estimation)
+            │
+            └── app/services/risk_engine.py (Deterministic Physical Scoring)
+
+Technology Stack Details:
+  - Backend Runtime       : Python 3.10+ / 3.14 compatible
+  - Backend Framework     : FastAPI 0.115.0, Uvicorn 0.30.6
+  - Validation & Models   : Pydantic 2.9.2
+  - Data Processing       : Pandas 2.2.3
+  - Testing Framework     : Pytest 8.3.3, HTTPX 0.27.2
+  - Frontend Library      : React 18.3.1
+  - Language              : TypeScript 5.6.3
+  - Build Tool & Bundler  : Vite 5.4.10
+  - Geospatial Rendering  : Leaflet 1.9.4, React-Leaflet 4.2.1
+  - Typography & Styling  : IBM Plex Sans, Vanilla CSS3 (Custom Design System)
+  - Orchestration Script  : Bash (start.sh)
+
+
+3. CODEBASE STRUCTURE & INVENTORY
+--------------------------------------------------------------------------------
+Root directory: /Users/atishpardeshi/Downloads/floodsense-ai/
+
+floodsense-ai/
+├── README.md                           # Project description, quickstart & roadmap
+├── start.sh                            # Unified start script for backend & frontend
+├── .gitignore                          # Git ignore rules (node_modules, venv, caches)
+├── docs/
+│   └── DATA_SOURCES.md                 # Specifications for spots, incidents, DEM, OSM
+├── data/
+│   ├── manifests/
+│   │   └── dataset_manifest.json       # Dataset provenance, license, sha256 checksums
+│   ├── raw/
+│   │   ├── spots.csv                   # Monitored locations (names, coords, notes)
+│   │   ├── incidents.csv               # Historical flood incident logs (schema defined)
+│   │   ├── dem/                        # Digital Elevation Model cache (SRTM)
+│   │   ├── osm/                        # OpenStreetMap road & drainage vector cache
+│   │   └── rainfall/                   # Raw Open-Meteo API JSON cache
+│   └── processed/
+│       └── rainfall/                   # Rolling rainfall feature CSVs per spot
+├── backend/
+│   ├── requirements.txt                # Python backend dependencies
+│   ├── .env.example                    # Environment variable template (OpenRouter key)
+│   ├── scripts/
+│   │   └── prepare_data.py             # Data fetching, feature engineering, label builder
+│   ├── tests/
+│   │   ├── test_risk.py                # Tests for physical risk formula & monotonicity
+│   │   ├── test_api.py                 # Tests for FastAPI endpoints & validation
+│   │   └── test_prepare_data.py        # Tests for data preparation and label windowing
+│   └── app/
+│       ├── __init__.py
+│       ├── main.py                     # FastAPI application factory & CORS setup
+│       ├── core/
+│       │   ├── __init__.py
+│       │   └── constants.py            # Weights, thresholds, and normalisation caps
+│       ├── database/
+│       │   ├── __init__.py
+│       │   └── schemas.py              # Pydantic schemas (Spot, Rainfall, SpotRisk)
+│       ├── demo/
+│       │   ├── __init__.py
+│       │   └── fixtures.py             # Seed spots with baseline terrain/drain metrics
+│       ├── services/
+│       │   ├── __init__.py
+│       │   └── risk_engine.py          # Deterministic risk engine & driver generator
+│       └── api/
+│           ├── __init__.py
+│           ├── router.py               # Combined API router (/api)
+│           └── endpoints/
+│               ├── __init__.py
+│               ├── health.py           # GET /api/health
+│               └── risk.py             # GET /api/spots, GET /api/risk
+└── frontend/
+    ├── index.html                      # HTML entry with Google Font preconnects
+    ├── package.json                    # Node dependencies and scripts
+    ├── tsconfig.json                   # TypeScript configuration
+    ├── vite.config.ts                  # Vite config with /api proxy to localhost:8000
+    └── src/
+        ├── main.tsx                    # React DOM render root
+        ├── App.tsx                     # Main layout, state management & slider controls
+        ├── styles.css                  # Responsive styles, theme variables, map styling
+        ├── types/
+        │   └── index.ts                # TypeScript type definitions (SpotRisk, Level)
+        ├── services/
+        │   └── api.ts                  # Client fetch wrapper for /api/risk
+        └── components/
+            ├── dashboard/
+            │   └── RiskOverview.tsx    # Ranked list of vulnerable spots with risk badges
+            └── map/
+                ├── FloodMap.tsx        # Leaflet map container with auto-pan/fly-to
+                └── RiskMarker.tsx      # Risk-colored dynamic circular map markers
+
+
+4. HYDROLOGICAL RISK ENGINE & METHODOLOGY
+--------------------------------------------------------------------------------
+The backend implements a transparent, explainable physical baseline model in
+`backend/app/services/risk_engine.py`. Rather than relying on an opaque "black-box"
+model during the prototype stage, every factor is deterministically calculated.
+
+4.1 Effective Rainfall Intensity:
+---------------------------------
+Precipitation is aggregated into an effective intensity metric (mm/h) using a
+decayed combination of immediate rain, recent antecedent rain, and forecast rain:
+
+  Effective Intensity (mm/h) = 0.5 * rain_1h_mm
+                             + 0.3 * (rain_3h_mm / 3)
+                             + 0.2 * (forecast_2h_mm / 2)
+
+4.2 Topographical & Infrastructure Susceptibility:
+--------------------------------------------------
+Each location is assigned an intrinsic susceptibility score (0.0 to 1.0) based
+on four calibrated factors:
+  - Depression Depth   (Weight: 35%, Max Cap: 6.0 m)   : Sits below surrounding terrain
+  - Catchment Area     (Weight: 25%, Max Cap: 300.0 ha): Upstream drainage watershed
+  - Drain Distance     (Weight: 20%, Max Cap: 400.0 m) : Proximity to stormwater drain
+  - Incident History   (Weight: 20%, Max Cap: 5 events): Past documented floods
+
+  Susceptibility = 0.35 * clamp(depth / 6.0)
+                 + 0.25 * clamp(catchment / 300.0)
+                 + 0.20 * clamp(drain_dist / 400.0)
+                 + 0.20 * clamp(incidents / 5.0)
+
+4.3 Composite Risk Score:
+-------------------------
+The final risk score combines rainfall intensity and intrinsic susceptibility:
+
+  Rain Factor = clamp(Effective Intensity / 50.0 mm/h) ^ 0.8
+  Risk Score  = clamp(Rain Factor * (0.35 + 0.9 * Susceptibility), 0.0, 1.0)
+
+4.4 Classification Thresholds & Warning Levels:
+-----------------------------------------------
+  - GREEN ("Low risk")        : Risk < 0.35
+  - AMBER ("Watch")           : 0.35 <= Risk < 0.65
+  - RED   ("Likely to flood") : Risk >= 0.65
+
+4.5 Lead Time Calculation:
+--------------------------
+To determine actionable lead time:
+  1. The risk score is evaluated using current rainfall only (forecast = 0).
+  2. If the inclusion of the 2-hour forecast elevates the alert level
+     (e.g., from Green to Amber, or Amber to Red), a warning lead time of
+     approximately 45 minutes is triggered (`FORECAST_LEAD_MIN = 45`).
+  3. If the spot is already at that level under current rainfall, lead time is 0 min.
+  4. If the spot remains Green, lead time is null.
+
+4.6 Human-Explainable Risk Drivers:
+-----------------------------------
+The engine automatically populates driver annotations explaining the underlying
+cause of elevated risk, such as:
+  - "Heavy rain (about 38 mm/h effective)"
+  - "Sits 4.5 m below its surroundings"
+  - "Large upstream catchment (260 ha)"
+  - "Nearest drain is 320 m away"
+  - "4 past flood reports"
+
+
+5. PILOT STUDY LOCATIONS
+--------------------------------------------------------------------------------
+The system is seeded with 8 critical flood-prone transit and residential nodes
+across Bengaluru (`backend/app/demo/fixtures.py` and `data/raw/spots.csv`):
+
+  Spot ID        | Name                      | Lat, Lng          | Depth | Catchment | Drain Dist | Incidents
+  ---------------+---------------------------+-------------------+-------+-----------+------------+----------
+  silk_board     | Silk Board Junction       | 12.9177, 77.6233  | 4.5 m | 260 ha    | 320 m      | 4
+  bellandur      | Bellandur Lake Edge       | 12.9352, 77.6745  | 5.5 m | 290 ha    | 150 m      | 5
+  hsr_layout     | HSR Layout Sector 2       | 12.9116, 77.6389  | 3.0 m | 140 ha    | 220 m      | 3
+  agara          | Agara Underpass           | 12.9250, 77.6480  | 4.0 m | 180 ha    | 260 m      | 3
+  kr_circle      | KR Circle Underpass       | 12.9763, 77.5929  | 3.5 m | 110 ha    | 120 m      | 3
+  hebbal         | Hebbal Flyover Approach   | 13.0358, 77.5970  | 2.5 m | 200 ha    | 180 m      | 2
+  mahadevapura   | Mahadevapura Main Road    | 12.9910, 77.6980  | 2.0 m |  90 ha    | 300 m      | 2
+  indiranagar    | Indiranagar 100ft Road    | 12.9719, 77.6412  | 0.8 m |  40 ha    |  60 m      | 0
+
+
+6. DATA PIPELINE & PROVENANCE
+--------------------------------------------------------------------------------
+The project features an automated data ingestion and labeling framework in
+`backend/scripts/prepare_data.py`:
+
+  - Historical Rainfall Ingestion:
+    Fetches hourly precipitation from the Open-Meteo Historical Weather Archive
+    API for every study coordinate in annual partitions, cached locally under
+    `data/raw/rainfall/{spot_id}_{start}_{end}.json`.
+  - Feature Engineering:
+    Constructs rolling time-series features (`rain_1h_mm`, `rain_3h_mm`,
+    `rain_24h_mm`, and future lookahead `next_2h_mm`).
+  - Label Generation:
+    Matches reported events in `incidents.csv` to time windows.
+    - Positive labels (`flood = 1`): Spot-hours within +/- 1 hour of reported time
+      (or peak rain hour if clock time was unrecorded).
+    - Ambiguity buffer: Hours within +/- 3 hours of a flood window are excluded.
+    - Negative labels (`flood = 0`): Rainy hours with >= 5 mm rain in previous 3 h,
+      ensuring negatives represent true non-flooding rain events rather than dry days.
+  - Manifest Tracking:
+    `data/manifests/dataset_manifest.json` tracks source URLs, coordinate
+    sampling boundaries, licensing terms, and SHA-256 file checksums.
+
+
+7. FRONTEND USER EXPERIENCE & INTERFACE
+--------------------------------------------------------------------------------
+The user interface is built as a split-pane single-page application:
+
+  - Left Control & Overview Sidebar (360px):
+    - Header with title and tagline.
+    - Interactive Dual Range Sliders:
+      * Current rainfall rate: 0 to 80 mm/h.
+      * Forecast 2-hour accumulation: 0 to 150 mm.
+      * 150ms debounce prevents unnecessary API thrashing.
+    - Dynamic status banner summarizing the total number of critical locations.
+    - Ranked spot list displaying status dot (Green/Amber/Red), location name,
+      alert classification, lead time, and risk percentage.
+  - Right Interactive Map Canvas:
+    - Built on Leaflet and OpenStreetMap tiles.
+    - Centered on Bengaluru [12.96, 77.64] at zoom level 12.
+    - Risk markers dynamically change radius (9px to 23px) and fill color
+      (#2e7d5b green, #d9962b amber, #c23b2e red) based on calculated risk.
+    - Bidirectional selection: Clicking a spot on the list or on a map marker
+      triggers a smooth zoom/pan ("flyTo") and displays an interactive popup
+      containing the full risk breakdown and causative drivers.
+  - Responsive Styling:
+    - Automatic adaptation for mobile viewports (< 800px) switching from
+      horizontal split to vertical stacked layout (55% map, 45% controls).
+
+
+8. QUALITY ASSURANCE & TEST SUITE
+--------------------------------------------------------------------------------
+The backend includes a comprehensive pytest suite covering 15 distinct tests:
+
+  - `backend/tests/test_risk.py` (5 tests):
+    * `test_dry_weather_is_green_everywhere`: Confirms zero false alarms in dry weather.
+    * `test_heavy_rain_hits_vulnerable_spot_hardest`: Validates top-risk spots.
+    * `test_risk_never_decreases_with_more_rain`: Mathematical monotonicity check.
+    * `test_forecast_gives_lead_time`: Validates 45 min lead time assignment.
+    * `test_level_thresholds`: Verifies green, amber, red boundary behavior.
+
+  - `backend/tests/test_prepare_data.py` (7 tests):
+    * `test_rolling_features`: Verifies rolling 1h, 3h, and 2h lookahead sums.
+    * `test_time_given_labels_that_hour_window`: Validates +/- 1h labeling window.
+    * `test_missing_time_uses_peak_rain_and_says_so`: Validates peak rain fallback.
+    * `test_dry_day_incident_is_skipped_not_labelled`: Drops invalid incident reports.
+    * `test_unknown_spot_and_out_of_range_are_reported`: Validates boundary errors.
+    * `test_negatives_are_rainy_and_not_next_to_floods`: Confirms negative filtering.
+    * `test_year_chunks_split_on_year_boundaries`: Validates date chunking logic.
+
+  - `backend/tests/test_api.py` (3 tests):
+    * Tests `/api/health`, `/api/risk` shape & sorting, and input validation bounds.
+
+Execution Check:
+  Executing `PYTHONPATH=backend python3 -m pytest backend/tests/test_risk.py backend/tests/test_prepare_data.py`
+  passed 12/12 tests in 0.26 seconds.
+
+
+9. CURRENT LIMITATIONS & GAP ANALYSIS
+--------------------------------------------------------------------------------
+1. Estimated Spot Parameters (Fixtures):
+   Terrain elevation depth (`rel_depth_m`), catchment area (`catchment_ha`),
+   and drain distances (`drain_dist_m`) in `fixtures.py` are heuristic estimates.
+   They need to be derived from real SRTM/Copernicus 30m DEM raster grids and
+   OSM waterway / stormwater drain shapefiles.
+
+2. Empty Incident Log:
+   `data/raw/incidents.csv` contains only column headers. A minimum of 20+ verified
+   flood events (e.g., September 2022 Bengaluru floods, May 2023 underpass drownings)
+   must be populated to train or benchmark ML models.
+
+3. Frontend 3h Rain Approximation:
+   In `frontend/src/App.tsx`, `rain_3h_mm` is hardcoded as `rainNow * 2` rather than
+   integrating a third slider or fetching live cumulative historical rain.
+
+4. Absence of Live Weather Ingestion:
+   The application is currently driven exclusively by manual simulation sliders.
+   It lacks an automated live ingestion service polling IMD (India Meteorological
+   Department) radar/AWS or Open-Meteo current forecast APIs.
+
+5. AI / LLM Agent Not Yet Integrated:
+   While the repository is named `floodsense-ai` and contains `.env.example` with
+   an `OPENROUTER_API_KEY`, the agentic reasoning layer (e.g., automated municipal
+   response generation, emergency routing alerts, citizen multilingual alerts)
+   is not yet implemented.
+
+6. Security & Production Hardening:
+   - CORS is restricted to `localhost:5173`.
+   - No rate limiting or API authentication.
+   - Missing Docker containerization and reverse proxy (Nginx / Caddy) configuration.
+
+
+10. STRATEGIC RECOMMENDATIONS & ROADMAP
+--------------------------------------------------------------------------------
+Phase 1: Real-World Data Grounding (Immediate)
+  - Populate `data/raw/incidents.csv` with verified Bengaluru flood events from
+    monsoon seasons (2022-2025).
+  - Execute `prepare_data.py` to cache historical weather and generate `labels.csv`.
+  - Process real DEM (SRTM 30m) and OSM drainage vectors using GIS tools (Rasterio /
+    Shapely / GeoPandas) to compute exact physical metrics for `spots.csv`.
+
+Phase 2: Live Weather Feeds & Storm Replay
+  - Implement a backend background worker (`backend/app/services/weather_service.py`)
+    polling live weather APIs every 15 minutes.
+  - Implement storm replay scenarios (e.g., "September 5, 2022 130mm Deluge")
+    allowing users to step through historical flood evolutions hour by hour.
+
+Phase 3: Machine Learning Model Benchmarking
+  - Train an XGBoost or LightGBM classifier on `data/processed/labels.csv`.
+  - Benchmark ML predictions against the physical baseline engine.
+  - Publish performance metrics (ROC-AUC, Precision, Recall, F1-Score).
+
+Phase 4: Agentic Advisory & Multilingual Notifications
+  - Connect OpenRouter / Gemini API to generate structured emergency advisories:
+    * Citizen traffic rerouting warnings.
+    * Municipal pump deployment suggestions for BBMP / traffic police.
+    * Multilingual output (Kannada and English).
+
+Phase 5: Production Deployment & Containerization
+  - Create a multi-stage `Dockerfile` and `docker-compose.yml`.
+  - Add CI/CD GitHub Actions workflow for linting (Ruff, ESLint) and testing (Pytest).
+
+================================================================================
+                              END OF REPORT
+================================================================================
+

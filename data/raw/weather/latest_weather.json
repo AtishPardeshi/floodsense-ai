@@ -1,0 +1,107 @@
+{
+  "timestamp": "2026-11-10T06:52:04+00:00",
+  "bengaluru_avg_rain_1h": 0.0,
+  "bengaluru_max_rain_1h": 0.0,
+  "bengaluru_avg_forecast_2h": 0.0,
+  "spots_weather": [
+    {
+      "spot_id": "silk_board",
+      "name": "Silk Board Junction",
+      "lat": 12.9177,
+      "lng": 77.6233,
+      "current_rain_mm_h": 0.0,
+      "past_3h_mm": 0.0,
+      "past_6h_mm": 0.0,
+      "forecast_2h_mm": 0.0,
+      "timestamp": "2026-11-10T06:52:04+00:00",
+      "source": "open-meteo-forecast-live"
+    },
+    {
+      "spot_id": "bellandur",
+      "name": "Bellandur Lake Edge",
+      "lat": 12.9352,
+      "lng": 77.6745,
+      "current_rain_mm_h": 0.0,
+      "past_3h_mm": 0.0,
+      "past_6h_mm": 0.0,
+      "forecast_2h_mm": 0.0,
+      "timestamp": "2026-11-10T06:52:04+00:00",
+      "source": "open-meteo-forecast-live"
+    },
+    {
+      "spot_id": "hsr_layout",
+      "name": "HSR Layout Sector 2",
+      "lat": 12.9116,
+      "lng": 77.6389,
+      "current_rain_mm_h": 0.0,
+      "past_3h_mm": 0.0,
+      "past_6h_mm": 0.0,
+      "forecast_2h_mm": 0.0,
+      "timestamp": "2026-11-10T06:52:04+00:00",
+      "source": "open-meteo-forecast-live"
+    },
+    {
+      "spot_id": "agara",
+      "name": "Agara Underpass",
+      "lat": 12.925,
+      "lng": 77.648,
+      "current_rain_mm_h": 0.0,
+      "past_3h_mm": 0.0,
+      "past_6h_mm": 0.0,
+      "forecast_2h_mm": 0.0,
+      "timestamp": "2026-11-10T06:52:04+00:00",
+      "source": "open-meteo-forecast-live"
+    },
+    {
+      "spot_id": "kr_circle",
+      "name": "KR Circle Underpass",
+      "lat": 12.9763,
+      "lng": 77.5929,
+      "current_rain_mm_h": 0.0,
+      "past_3h_mm": 0.0,
+      "past_6h_mm": 0.0,
+      "forecast_2h_mm": 0.0,
+      "timestamp": "2026-11-10T06:52:04+00:00",
+      "source": "open-meteo-forecast-live"
+    },
+    {
+      "spot_id": "hebbal",
+      "name": "Hebbal Flyover Approach",
+      "lat": 13.0358,
+      "lng": 77.597,
+      "current_rain_mm_h": 0.0,
+      "past_3h_mm": 0.0,
+      "past_6h_mm": 0.0,
+      "forecast_2h_mm": 0.0,
+      "timestamp": "2026-11-10T06:52:04+00:00",
+      "source": "open-meteo-forecast-live"
+    },
+    {
+      "spot_id": "mahadevapura",
+      "name": "Mahadevapura Main Road",
+      "lat": 12.991,
+      "lng": 77.698,
+      "current_rain_mm_h": 0.0,
+      "past_3h_mm": 0.0,
+      "past_6h_mm": 0.0,
+      "forecast_2h_mm": 0.0,
+      "timestamp": "2026-11-10T06:52:04+00:00",
+      "source": "open-meteo-forecast-live"
+    },
+    {
+      "spot_id": "indiranagar",
+      "name": "Indiranagar 100ft Road",
+      "lat": 12.9719,
+      "lng": 77.6412,
+      "current_rain_mm_h": 0.0,
+      "past_3h_mm": 0.0,
+      "past_6h_mm": 0.0,
+      "forecast_2h_mm": 0.0,
+      "timestamp": "2026-11-10T06:52:04+00:00",
+      "source": "open-meteo-forecast-live"
+    }
+  ],
+  "is_live": true,
+  "data_source": "Open-Meteo Forecast Live API",
+  "note": "Real-time precipitation and 2-hour nowcast fetched successfully."
+}

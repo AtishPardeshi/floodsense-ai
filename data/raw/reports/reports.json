@@ -1,0 +1,134 @@
+[
+  {
+    "report_id": "rep_2cbf45e04dd1",
+    "tracking_token": "REP-2026-0610FD",
+    "latitude": 12.92,
+    "longitude": 77.63,
+    "location_name": "Coordinates (12.9200, 77.6300)",
+    "severity": "medium",
+    "description": "Water logging near junction corner.",
+    "has_photo": false,
+    "citizen_contact": null,
+    "timestamp": "2026-11-10T08:04:35+00:00",
+    "client_timestamp": null,
+    "status": "under_review",
+    "verification_notes": "Field officer assigned",
+    "status_history": [
+      {
+        "status": "submitted",
+        "timestamp": "2026-11-10T08:04:35+00:00",
+        "note": "Report received via FloodSense Citizen PWA. Logged in queue."
+      },
+      {
+        "status": "under_review",
+        "timestamp": "2026-11-10T08:04:35+00:00",
+        "note": "Field officer assigned"
+      }
+    ]
+  },
+  {
+    "report_id": "rep_dec2829699ac",
+    "tracking_token": "REP-2026-A64232",
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "location_name": "Cubbon Park Underpass",
+    "severity": "high",
+    "description": "Knee-deep water accumulating under the bridge. Sedans turning around.",
+    "has_photo": false,
+    "citizen_contact": "citizen@example.com",
+    "timestamp": "2026-11-10T08:04:35+00:00",
+    "client_timestamp": null,
+    "status": "submitted",
+    "verification_notes": "Report received and queued for review. This report is pending verification by municipal hydrologists and ground marshals.",
+    "status_history": [
+      {
+        "status": "submitted",
+        "timestamp": "2026-11-10T08:04:35+00:00",
+        "note": "Report received via FloodSense Citizen PWA. Logged in queue."
+      }
+    ]
+  },
+  {
+    "report_id": "rep_seed_01",
+    "tracking_token": "REP-2026-KRC01",
+    "latitude": 12.9763,
+    "longitude": 77.5929,
+    "location_name": "KR Circle Underpass",
+    "severity": "high",
+    "description": "Water accumulating up to curb level on the southern ramp. Traffic slowing down.",
+    "has_photo": false,
+    "citizen_contact": null,
+    "timestamp": "2026-11-10T08:04:35+00:00",
+    "status": "under_review",
+    "verification_notes": "Assigned to BBMP East ward control room. Telemetry shows 18 mm/h rainfall in vicinity.",
+    "status_history": [
+      {
+        "status": "submitted",
+        "timestamp": "2026-11-10T08:04:35+00:00",
+        "note": "Received via Citizen Web App."
+      },
+      {
+        "status": "under_review",
+        "timestamp": "2026-11-10T08:04:35+00:00",
+        "note": "Cross-referencing radar and underpass CCTV feed."
+      }
+    ]
+  },
+  {
+    "report_id": "rep_seed_02",
+    "tracking_token": "REP-2026-BLR02",
+    "latitude": 12.9352,
+    "longitude": 77.6745,
+    "location_name": "Outer Ring Road, Bellandur EcoSpace",
+    "severity": "critical",
+    "description": "Lake overflow into service road carriageway. Light vehicles cannot pass safely.",
+    "has_photo": false,
+    "citizen_contact": null,
+    "timestamp": "2026-11-10T08:04:35+00:00",
+    "status": "approved",
+    "verification_notes": "Verified by traffic police marshals. Dewatering pump team mobilized.",
+    "status_history": [
+      {
+        "status": "submitted",
+        "timestamp": "2026-11-10T08:04:35+00:00",
+        "note": "Received via Citizen Web App."
+      },
+      {
+        "status": "under_review",
+        "timestamp": "2026-11-10T08:04:35+00:00",
+        "note": "Forwarded to Traffic Management Center."
+      },
+      {
+        "status": "approved",
+        "timestamp": "2026-11-10T08:04:35+00:00",
+        "note": "Verified field incident. Warning published on map."
+      }
+    ]
+  },
+  {
+    "report_id": "rep_seed_03",
+    "tracking_token": "REP-2026-AGR03",
+    "latitude": 12.925,
+    "longitude": 77.648,
+    "location_name": "Agara Junction underpass entry",
+    "severity": "low",
+    "description": "Small ponding near slip road catch-basin. Drain grate covered by leaves.",
+    "has_photo": false,
+    "citizen_contact": null,
+    "timestamp": "2026-11-10T08:04:35+00:00",
+    "status": "needs_info",
+    "verification_notes": "Please provide clearer visual landmark or intersection angle when safe to do so.",
+    "status_history": [
+      {
+        "status": "submitted",
+        "timestamp": "2026-11-10T08:04:35+00:00",
+        "note": "Received via Citizen Web App."
+      },
+      {
+        "status": "needs_info",
+        "timestamp": "2026-11-10T08:04:35+00:00",
+        "note": "Requesting additional visual landmark or photos."
+      }
+    ]
+  }
+]
