@@ -111,81 +111,104 @@ export default function App() {
   return (
     <div className="layout">
       <aside className="panel">
-        <header>
-          <h1>FloodSense AI</h1>
-          <p className="sub">Hyperlocal flood early warning for Bengaluru</p>
+        <header className="app-header">
+          <div className="civic-header-tag">
+            <span className="live-dot" aria-hidden="true" />
+            <span>CIVIC INTELLIGENCE PLATFORM · BENGALURU</span>
+          </div>
+          <div className="brand-row">
+            <h1>FloodSense AI</h1>
+            <span className="civic-badge">Phase 3</span>
+          </div>
+          <p className="sub">Hyperlocal flood early warning &amp; civic response coordination</p>
         </header>
 
         {/* Offline & PWA Sync Status Banner */}
         <ConnectionStatusBanner onQueueUpdated={refreshReports} />
 
-        {/* View Mode Switcher */}
-        <div className="view-mode-tabs" role="tablist">
+        {/* View Mode Switcher - Clean 4x2 Grid */}
+        <nav className="view-mode-tabs" role="tablist" aria-label="Operational views">
           <button
             className={`tab-btn ${viewMode === "live" ? "active" : ""}`}
             onClick={() => setViewMode("live")}
             role="tab"
             aria-selected={viewMode === "live"}
+            title="Live Risk Engine"
           >
-            ⚡ Live
+            <span className="tab-icon">⚡</span>
+            <span className="tab-label">Live</span>
           </button>
           <button
             className={`tab-btn ${viewMode === "replay" ? "active" : ""}`}
             onClick={() => setViewMode("replay")}
             role="tab"
             aria-selected={viewMode === "replay"}
+            title="Historical Storm Replay"
           >
-            ⏱️ Replay
+            <span className="tab-icon">⏱️</span>
+            <span className="tab-label">Replay</span>
           </button>
           <button
             className={`tab-btn ${viewMode === "evidence" ? "active" : ""}`}
             onClick={() => setViewMode("evidence")}
             role="tab"
             aria-selected={viewMode === "evidence"}
+            title="Operational Evidence Overlay"
           >
-            📊 Evidence
-          </button>
-          <button
-            className={`tab-btn ${viewMode === "report" ? "active" : ""}`}
-            onClick={() => setViewMode("report")}
-            role="tab"
-            aria-selected={viewMode === "report"}
-          >
-            📝 Report
-          </button>
-          <button
-            className={`tab-btn ${viewMode === "track" ? "active" : ""}`}
-            onClick={() => setViewMode("track")}
-            role="tab"
-            aria-selected={viewMode === "track"}
-          >
-            🔍 Track
-          </button>
-          <button
-            className={`tab-btn ${viewMode === "operator" ? "active" : ""}`}
-            onClick={() => setViewMode("operator")}
-            role="tab"
-            aria-selected={viewMode === "operator"}
-          >
-            🛡️ BBMP
-          </button>
-          <button
-            className={`tab-btn ${viewMode === "responder" ? "active" : ""}`}
-            onClick={() => setViewMode("responder")}
-            role="tab"
-            aria-selected={viewMode === "responder"}
-          >
-            🚜 Field
+            <span className="tab-icon">📊</span>
+            <span className="tab-label">Evidence</span>
           </button>
           <button
             className={`tab-btn ${viewMode === "alerts" ? "active" : ""}`}
             onClick={() => setViewMode("alerts")}
             role="tab"
             aria-selected={viewMode === "alerts"}
+            title="Civic Emergency Alerts"
           >
-            🔔 Alerts
+            <span className="tab-icon">🔔</span>
+            <span className="tab-label">Alerts</span>
           </button>
-        </div>
+          <button
+            className={`tab-btn ${viewMode === "report" ? "active" : ""}`}
+            onClick={() => setViewMode("report")}
+            role="tab"
+            aria-selected={viewMode === "report"}
+            title="Citizen Waterlogging Report"
+          >
+            <span className="tab-icon">📝</span>
+            <span className="tab-label">Report</span>
+          </button>
+          <button
+            className={`tab-btn ${viewMode === "track" ? "active" : ""}`}
+            onClick={() => setViewMode("track")}
+            role="tab"
+            aria-selected={viewMode === "track"}
+            title="Track Report Status"
+          >
+            <span className="tab-icon">🔍</span>
+            <span className="tab-label">Track</span>
+          </button>
+          <button
+            className={`tab-btn ${viewMode === "operator" ? "active" : ""}`}
+            onClick={() => setViewMode("operator")}
+            role="tab"
+            aria-selected={viewMode === "operator"}
+            title="BBMP Triage Console"
+          >
+            <span className="tab-icon">🛡️</span>
+            <span className="tab-label">BBMP</span>
+          </button>
+          <button
+            className={`tab-btn ${viewMode === "responder" ? "active" : ""}`}
+            onClick={() => setViewMode("responder")}
+            role="tab"
+            aria-selected={viewMode === "responder"}
+            title="Field Responder Unit"
+          >
+            <span className="tab-icon">🚜</span>
+            <span className="tab-label">Field</span>
+          </button>
+        </nav>
 
         {/* Mode-Specific Content */}
         {viewMode === "live" && (
